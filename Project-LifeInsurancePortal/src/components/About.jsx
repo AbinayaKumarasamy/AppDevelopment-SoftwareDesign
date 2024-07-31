@@ -39,7 +39,7 @@ const AboutUs = () => {
           <div className="team-members">
             <div className="team-member">
             <img src={modi} alt="member1" />
-              <h3>John Doe</h3>
+              <h3>Narendra Modi</h3>
               <p>CEO</p>
             </div>
             <div className="team-member">

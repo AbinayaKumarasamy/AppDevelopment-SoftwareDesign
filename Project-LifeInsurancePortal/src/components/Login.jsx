@@ -92,7 +92,7 @@ const Login = () => {
             Welcome Back!
           </Typography>
           <Typography variant="subtitle1" gutterBottom>
-            Affordable health insurance to families in America since 2022.
+            Affordable health insurance to families since 2022.
           </Typography>
           <Box component="form" sx={{ width: '100%' }} noValidate autoComplete="off" onSubmit={handleSubmit}>
             <TextField
