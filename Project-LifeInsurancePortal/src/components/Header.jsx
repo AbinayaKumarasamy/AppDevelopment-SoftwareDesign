@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../context/UserContext'; // Correct import
-import './NavBar.css';
+import { UserContext } from '../context/UserContext'; 
+import './Header.css';
 import logo from '../assets/logo.png';
 
-const NavBar = () => {
+const Header = () => {
   const { username } = useContext(UserContext);
 
   return (
@@ -24,4 +24,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Header;

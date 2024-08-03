@@ -1,0 +1,127 @@
+/* Container */
+.container {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  /* Header */
+  .header {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 36px;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    color: #6c757d;
+    font-size: 18px;
+  }
+  
+  /* Main */
+  .main {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Sections */
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .section-content, .list, .faq {
+    color: #6c757d;
+    font-size: 16px;
+  }
+  
+  .list {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .icon {
+    color: #28a745;
+    margin-right: 5px;
+  }
+  
+  /* FAQs */
+  .faq-item {
+    margin-bottom: 10px;
+  }
+  
+  .faq-question {
+    font-size: 18px;
+    color: #007bff;
+  }
+  
+  .faq-answer {
+    margin-left: 20px;
+  }
+  
+  /* Contact Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    color: #6c757d;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  .form-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #343a40;
+    color: #ffffff;
+    margin-top: 20px;
+  }
+  
+  .footer .icon {
+    color: #ffc107;
+  }
+  

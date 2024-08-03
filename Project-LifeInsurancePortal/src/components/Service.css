@@ -2,108 +2,72 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f7f6;
+ 
 }
 
-.about-container {
+.service-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.service-header {
+  position: relative;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  align-items: center;
 }
 
-.main-content {
-  flex: 1;
-  padding: 20px;
-  position: relative;
-}
-
-.intro-section,
-.history-section,
-.mission-section,
-.values-section,
-.team-section {
-  margin-bottom: 30px;
-}
-
-.intro-section h1 {
+.service-header h1 {
   font-size: 3em;
   color: #2c3e50;
-  text-align: center;
   margin-bottom: 10px;
 }
 
-.intro-section p {
-  text-align: center;
-  font-size: 1.3em;
+.service-header p {
+  font-size: 1.2em;
   color: #7f8c8d;
 }
 
-.history-section h2,
-.mission-section h2,
-.values-section h2,
-.team-section h2 {
-  color: #2c3e50;
-  border-bottom: 3px solid #2980b9;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-}
-
-.values-section ul {
-  list-style: none;
-  padding: 0;
-  color: #7f8c8d;
-}
-
-.values-section li {
-  margin-bottom: 15px;
-  font-size: 1.1em;
-}
-
-.values-section li strong {
-  color: #2980b9;
-}
-
-.team-section .team-members {
+.service-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 20px;
 }
 
-.team-member {
+.service-card {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 300px;
-  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
-.team-member:hover {
+.service-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.team-member img {
-  height: 100px;
-  border-radius: 50%;
+.service-icon {
+  font-size: 3em;
+  color: #2980b9;
   margin-bottom: 15px;
 }
 
-.member-info {
-  background-color: #ecf0f1;
-  padding: 10px;
-  border-radius: 5px;
+.service-title {
+  font-size: 1.5em;
+  color: #2c3e50;
+  margin-bottom: 10px;
 }
 
-.member-info h3 {
-  color: #2980b9;
-  margin: 10px 0 5px;
-}
-
-.member-info p {
+.service-description {
+  font-size: 1em;
   color: #7f8c8d;
 }
 
@@ -132,23 +96,23 @@ body {
 }
 
 @media (min-width: 768px) {
-  .team-members {
-    justify-content: space-evenly;
+  .service-cards {
+    justify-content: space-between;
   }
 
-  .team-member {
+  .service-card {
     width: calc(33.333% - 40px);
   }
 }
 
 @media (max-width: 767px) {
-  .team-member {
+  .service-card {
     width: calc(50% - 20px);
   }
 }
 
 @media (max-width: 480px) {
-  .team-member {
+  .service-card {
     width: 100%;
   }
 }

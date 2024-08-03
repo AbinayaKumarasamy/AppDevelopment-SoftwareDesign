@@ -1,11 +1,11 @@
 import React from 'react'
 import HomePage from '../components/HomePage'
-import NavBar from '../components/NavBar'
+import Header from '../components/Header'
 import Footer from '../components/Footer'
 function Display() {
   return (
     <div>
-      <NavBar/>
+      <Header/>
       <HomePage/>
       <Footer/>
     </div>
