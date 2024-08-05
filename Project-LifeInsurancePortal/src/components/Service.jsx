@@ -56,7 +56,7 @@ const Service = () => {
   return (
     <div className="service-container">
       <header className="service-header">
-        <button className="back-button" onClick={handleBackClick}>
+        <button className="b-button" onClick={handleBackClick}>
           <FaArrowLeft /> Back
         </button>
         <h1>Our Services</h1>

@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TermLifeInsurance.css';
-import { FaCheck, FaInfoCircle, FaPhoneAlt } from 'react-icons/fa';
+import { FaCheck, FaPhoneAlt } from 'react-icons/fa';
 
 const TermLifeInsurance = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const openForm = () => setIsFormOpen(true);
+  const closeForm = () => setIsFormOpen(false);
+
   return (
     <div className="container">
       <header className="header">
+        <button className="back-button" onClick={() => window.history.back()}>&larr; Back</button>
         <h1 className="title">Term Life Insurance</h1>
         <p className="subtitle">Affordable and flexible life insurance plans to protect your loved ones financially.</p>
       </header>
@@ -29,7 +35,7 @@ const TermLifeInsurance = () => {
         </section>
 
         <section className="section">
-          <h2 className="section-title">Benefits</h2>
+          <h2 className="section-title">Advantages</h2>
           <ul className="list">
             <li><FaCheck className="icon" /> Financial security for your loved ones</li>
             <li><FaCheck className="icon" /> Affordable premiums</li>
@@ -45,6 +51,13 @@ const TermLifeInsurance = () => {
             <li><FaCheck className="icon" /> Health: Must undergo a medical examination</li>
             <li><FaCheck className="icon" /> Non-smoker status preferred</li>
           </ul>
+        </section>
+
+        <section className="section">
+          <h2 className="section-title">Interest Rates</h2>
+          <p className="section-content">
+            The interest rates for term life insurance policies vary based on the term length, coverage amount, and the policyholder's health and age. It's important to consult with an insurance advisor to get the most accurate rates for your specific situation.
+          </p>
         </section>
 
         <section className="section">
@@ -82,7 +95,41 @@ const TermLifeInsurance = () => {
             </div>
             <button type="submit" className="form-button">Submit</button>
           </form>
-        </section>
+        </section> 
+
+        <button className="apply-button" onClick={openForm}>Apply for Policy</button>
+
+        {isFormOpen && (
+          <div className="modal">
+            <div className="modal-content">
+              <h2>Apply for Term Life Insurance</h2>
+              <form>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="applicant-name">Name</label>
+                  <input type="text" id="applicant-name" className="form-input" />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="applicant-email">Email</label>
+                  <input type="email" id="applicant-email" className="form-input" />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="applicant-phone">Phone Number</label>
+                  <input type="tel" id="applicant-phone" className="form-input" />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="applicant-age">Age</label>
+                  <input type="number" id="applicant-age" className="form-input" />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="applicant-health">Health Conditions</label>
+                  <textarea id="applicant-health" className="form-textarea"></textarea>
+                </div>
+                <button type="submit" className="form-button">Submit</button>
+                <button type="button" onClick={closeForm} className="form-button cancel-button">Cancel</button>
+              </form>
+            </div>
+          </div>
+        )}
       </main>
 
       <footer className="footer">
