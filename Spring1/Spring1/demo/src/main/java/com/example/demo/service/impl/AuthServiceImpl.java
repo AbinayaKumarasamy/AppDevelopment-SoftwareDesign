@@ -45,11 +45,12 @@ public class AuthServiceImpl implements AuthService {
                 .phone(registerRequest.getPhone())
                 .address(registerRequest.getAddress())
                 .role(Role.User)
+                // .policyType(registerRequest.getPolicyType()) // Ensure this line matches the User class field
                 .build();
         userRepository.save(user);
         return "User registered successfully.";
     }
-
+    
     @Override
     public LoginResponse login(LoginRequest loginRequest) {
         authenticationManager.authenticate(
@@ -93,6 +94,7 @@ public class AuthServiceImpl implements AuthService {
                 .phone("1234567890")
                 .address("xyz")
                 .role(Role.Admin)
+                // .policyType("DefaultPolicy") // Set policyType if needed
                 .build();
         userRepository.save(user);
         return "Admin registered successfully.";

@@ -11,7 +11,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -25,8 +25,9 @@ public class Payment {
     private Date paymentDate;
     private String paymentMethod;
     private String paymentStatus;
+    private int age;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties("payments")
     private Policy policy;
 
@@ -44,7 +45,11 @@ public class Payment {
     }
 
     public void setAmount(double amount) {
-        this.amount = amount;
+        if (age < 18) {
+            this.amount = amount * 0.9; // 10% discount for under 18
+        } else {
+            this.amount = amount * 1.1; // 10% increase for 18 and over
+        }
     }
 
     public double getInterest() {
@@ -52,7 +57,11 @@ public class Payment {
     }
 
     public void setInterest(double interest) {
-        this.interest = interest;
+        if (age < 18) {
+            this.interest = interest * 0.9; // 10% discount for under 18
+        } else {
+            this.interest = interest * 1.1; // 10% increase for 18 and over
+        }
     }
 
     public Date getPaymentDate() {
@@ -79,6 +88,17 @@ public class Payment {
         this.paymentStatus = paymentStatus;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+        // Update amount and interest whenever age is set
+        setAmount(this.amount);
+        setInterest(this.interest);
+    }
+
     public Policy getPolicy() {
         return policy;
     }
@@ -91,13 +111,17 @@ public class Payment {
     public Payment() {
     }
 
-    public Payment(Long id, double amount, double interest, Date paymentDate, String paymentMethod, String paymentStatus, Policy policy) {
+    public Payment(Long id, double amount, double interest, Date paymentDate, String paymentMethod, String paymentStatus, int age, Policy policy) {
         this.id = id;
         this.amount = amount;
         this.interest = interest;
         this.paymentDate = paymentDate;
         this.paymentMethod = paymentMethod;
         this.paymentStatus = paymentStatus;
+        this.age = age;
         this.policy = policy;
+        // Ensure the amount and interest are set correctly based on age
+        setAmount(amount);
+        setInterest(interest);
     }
 }

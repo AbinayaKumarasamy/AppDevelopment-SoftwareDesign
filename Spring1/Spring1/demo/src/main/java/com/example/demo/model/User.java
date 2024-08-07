@@ -7,9 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.demo.enums.Role;
-//import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-//import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -17,7 +16,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-//import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,20 +33,27 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uid;
+
     private String name;
     private String email;
     private String password;
     private String phone;
     private String address;
 
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Policy> policies;
+
+    
+
+    // New field for policy type
+    // private String policyType;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;
-
-    
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -57,7 +62,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        // NOTE : return username, if you are using username for login instead of email
+        // Return email if using email for login
         return email;
     }
 

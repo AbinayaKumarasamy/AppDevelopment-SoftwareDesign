@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
-import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -12,7 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -57,11 +56,12 @@ public class Policy {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties("policies")
+    @JsonBackReference
     private User user;
 
-    @OneToMany(mappedBy = "policy", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "policy", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("policy")
-    private List<Payment> payments;
+    private Payment payments;
 
    
 
@@ -345,26 +345,28 @@ public class Policy {
         this.user = user;
     }
 
-    public List<Payment> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<Payment> payments) {
-        this.payments = payments;
-    }
+   
 
     // Constructors
     public Policy() {
     }
 
-    public Policy(Long id, String name, String email, String phoneNumber, int age, String healthConditions, String gender,
-                  String maritalStatus, String nationality, String occupation, String employer, double annualIncome,
-                  String address, String ssn, String driverLicenseNumber, String passportNumber, String insuranceType,
-                  int policyTerm, double coverageAmount, String beneficiaries, double height, double weight,
-                  boolean smokingStatus, String alcoholConsumption, String medicalHistory, 
-                  String currentMedications, String primaryCarePhysician, 
-                  String existingPolicies, String outstandingDebts, String paymentMethod, String bankAccountDetails,
-                  String billingAddress, String agentBrokerInfo, String referralInfo, User user, List<Payment> payments) {
+    public Payment getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Payment payments) {
+        this.payments = payments;
+    }
+
+    public Policy(Long id, String name, String email, String phoneNumber, int age, String healthConditions,
+            String gender, String maritalStatus, String nationality, String occupation, String employer,
+            double annualIncome, String address, String ssn, String driverLicenseNumber, String passportNumber,
+            String insuranceType, int policyTerm, double coverageAmount, String beneficiaries, double height,
+            double weight, boolean smokingStatus, String alcoholConsumption, String medicalHistory,
+            String currentMedications, String primaryCarePhysician, String existingPolicies, String outstandingDebts,
+            String paymentMethod, String bankAccountDetails, String billingAddress, String agentBrokerInfo,
+            String referralInfo, User user, Payment payments) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -402,4 +404,6 @@ public class Policy {
         this.user = user;
         this.payments = payments;
     }
+
+   
 }

@@ -13,4 +13,8 @@ public class RegisterRequest {
     private String password;
     private String phone;
     private String address;
+
+    public String getPolicyType() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
