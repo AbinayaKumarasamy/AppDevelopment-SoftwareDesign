@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import static org.springframework.http.HttpStatus.OK;
-
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +24,8 @@ import lombok.RequiredArgsConstructor;
 public class AuthController {
 
     private final AuthService authService;
-
+    
+    @CrossOrigin(origins=" http://localhost:5173")
     @PostMapping("/register")
     @Operation(summary = "Register a new user", description = "Allows users to register by providing necessary registration details.")
     public ResponseEntity<?> register(@Parameter(description = "Registration details of the user") @RequestBody RegisterRequest registerRequest) {

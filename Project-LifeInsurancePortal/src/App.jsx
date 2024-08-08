@@ -1,20 +1,21 @@
 import React,{useState} from 'react'
 import {BrowserRouter,Route,Routes,Link} from 'react-router-dom'
-import Login from './components/Login'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Register from './components/Register'
+import Login from './components/User/Login'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import Register from './components/User/Register'
+import NavBar from './components/NavBar/NavBar'
 import { UserProvider } from './context/UserContext';
 import Display from './pages/Display'
-import HomePage from './components/HomePage'
-import About from './components/About'
-import Service from './components/Service'
-import TermLifeInsurance from './components/TermLifeInsurance'
-import WholeLifeInsurance from './components/WholeLifeInsurance'
-import UniversalLifeInsurance from './components/UniversalLifeInsurance'
-import HealthInsurance from './components/HealthInsurance'
-import GlobalCoverage from './components/GlobalCoverage'
-import InvestmentPlans from './components/InvestmentPlans'
+import HomePage from './components/HomePage/HomePage'
+import About from './components/About/About'
+import Service from './components/ServicesPages/Service'
+import TermLifeInsurance from './components/ServicesPages/TermLifeInsurance'
+import WholeLifeInsurance from './components/ServicesPages/WholeLifeInsurance'
+import UniversalLifeInsurance from './components/ServicesPages/UniversalLifeInsurance'
+import HealthInsurance from './components/ServicesPages/HealthInsurance'
+import GlobalCoverage from './components/ServicesPages/GlobalCoverage'
+import InvestmentPlans from './components/ServicesPages/InvestmentPlans'
 function App() {
   return (
     <div>
@@ -26,6 +27,7 @@ function App() {
         <Route path='/HomePage' element={<HomePage/>}/>
         <Route path='/Register' element={<Register/>}/>
         <Route path='/Header' element={<Header />} />
+        <Route path='/NavBar' element={<NavBar/>}/>
         <Route path='/Footer' element={<Footer />} />
         <Route path='/About' element={<About />} />
         <Route path='/Service' element={<Service />} />

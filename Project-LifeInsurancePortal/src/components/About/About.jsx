@@ -1,10 +1,9 @@
-// src/AboutUs.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import './About.css';
-import trump from '../assets/trump.jpg';
-import modi from '../assets/modi.jpg';
+import trump from '../../assets/trump.jpg';
+import modi from '../../assets/modi.jpg';
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -15,10 +14,10 @@ const AboutUs = () => {
 
   return (
     <div className="about-container">
+      <button className="bk-button" onClick={handleBackClick}>
+        <FaArrowLeft /> Back
+      </button>
       <main className="main-content">
-        <button className="back-button" onClick={handleBackClick}>
-          <FaArrowLeft /> Back
-        </button>
         <section className="intro-section">
           <h1>About Us</h1>
           <p>We are dedicated to providing the best life insurance solutions to secure your future.</p>
