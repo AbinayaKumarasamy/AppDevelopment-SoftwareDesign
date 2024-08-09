@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../context/UserContext'; // Correct import
+// import { UserContext } from '../../context/UserContext'; // Correct import
 import './NavBar.css';
 import logo from '../../assets/logo.png';
 
 const NavBar = () => {
-  const { username } = useContext(UserContext);
+  // const { username } = useContext(UserContext);
 
   return (
     <header className="header">
@@ -18,7 +18,7 @@ const NavBar = () => {
         <Link to="/">Home</Link>
         <Link to="/about">About Us</Link>
         <Link to="/services">Services</Link>
-        {username && <div>Hi {username}</div>}
+        {/* {username && <div>Hi {username}</div>} */}
       </nav>
     </header>
   );

@@ -1,12 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import './About.css';
 import trump from '../../assets/trump.jpg';
 import modi from '../../assets/modi.jpg';
 
 const AboutUs = () => {
-  const navigate = useNavigate();
 
   const handleBackClick = () => {
     navigate('/display');

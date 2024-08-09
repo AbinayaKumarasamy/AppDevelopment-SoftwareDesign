@@ -1,81 +1,95 @@
-.container {
-    display: flex;
-    justify-content: flex-end;  /* Align items to the right */
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-  }
-  .bg
-  {
-    background-image: url('../../assets/bgregister.jpeg'); /* Update the path as needed */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    padding: 20px;
-    box-sizing: border-box;
-    background-attachment: fixed;
-  }
-  
-  .formContainer {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-  }
-  
-  .title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .formGroup {
-    margin-bottom: 15px;
-  }
-  
-  .label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
-  
-  .textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
-    resize: vertical;
-  }
-  
-  .actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
+/* Ensure the body doesn't scroll sideways */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Full viewport height and width container */
+.containerss {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center align horizontally */
+  height: 100vh;
+  width: 100vw;
+  margin: 0; /* Remove default margin */
+  position: relative; /* Ensure positioning context for absolute positioning */
+}
+
+/* Background styling */
+.bg {
+  background-image: url('../../assets/bgregister.jpeg'); /* Update the path as needed */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%; /* Ensure background covers the entire width */
+  height: 100%; /* Ensure background covers the entire height */
+}
+
+/* Form container styling */
+.formContainer {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Restrict max-width for larger screens */
+  box-sizing: border-box; /* Ensure padding and borders are included in the width */
+  position: absolute; /* Allow positioning relative to the parent container */
+  right: 20px; /* Move the form towards the right side */
+}
+
+/* Title styling */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Form group styling */
+.formGroup {
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Input field styling */
+.input, .textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Textarea styling */
+.textarea {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+/* Actions container styling */
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; /* Center align buttons horizontally */
+}
+
+/* Button styling */
+.button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}

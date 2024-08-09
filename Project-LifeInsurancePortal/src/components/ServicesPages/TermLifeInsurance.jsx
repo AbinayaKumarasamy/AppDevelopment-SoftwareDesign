@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import './TermLifeInsurance.css';
 import { FaCheck, FaPhoneAlt } from 'react-icons/fa';
-
+import ApplyPolicy from './ApplyPolicy';
 const TermLifeInsurance = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
@@ -99,37 +100,7 @@ const TermLifeInsurance = () => {
 
         <button className="apply-button" onClick={openForm}>Apply for Policy</button>
 
-        {isFormOpen && (
-          <div className="modal">
-            <div className="modal-content">
-              <h2>Apply for Term Life Insurance</h2>
-              <form>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="applicant-name">Name</label>
-                  <input type="text" id="applicant-name" className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="applicant-email">Email</label>
-                  <input type="email" id="applicant-email" className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="applicant-phone">Phone Number</label>
-                  <input type="tel" id="applicant-phone" className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="applicant-age">Age</label>
-                  <input type="number" id="applicant-age" className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="applicant-health">Health Conditions</label>
-                  <textarea id="applicant-health" className="form-textarea"></textarea>
-                </div>
-                <button type="submit" className="form-button">Submit</button>
-                <button type="button" onClick={closeForm} className="form-button cancel-button">Cancel</button>
-              </form>
-            </div>
-          </div>
-        )}
+        {isFormOpen && <ApplyPolicy closeForm={closeForm} />}
       </main>
 
       <footer className="footer">

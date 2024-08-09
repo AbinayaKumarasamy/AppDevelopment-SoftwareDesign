@@ -35,44 +35,46 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-        private final AuthenticationProvider authenticationProvider;
-        private final JwtAuthenticationFilter jwtAuthenticationFilter;
-        private final LogoutHandler logoutHandler;
+    private final AuthenticationProvider authenticationProvider;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final LogoutHandler logoutHandler;
 
-        private static final String[] PublicEndPoints = {
-                        "/api/auth/**",
-                        "/swagger-ui/**",
-                        "/swagger-ui.html/**",
-                        "/api/admin/default",
-                        "/v3/api-docs/**"
-        };
+    private static final String[] PUBLIC_ENDPOINTS = {
+        "/api/auth/**",
+        "/swagger-ui/**",
+        "/swagger-ui.html/**",
+        "/api/admin/default",
+        "/v3/api-docs/**"
+    };
 
-        @Bean
-        public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-                return httpSecurity
-                                .csrf(AbstractHttpConfigurer::disable)
-                                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-                                .authorizeHttpRequests(
-                                                authorize -> authorize.requestMatchers(PublicEndPoints).permitAll().anyRequest().authenticated())
-                                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-                                .authenticationProvider(authenticationProvider)
-                                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                                .logout(logout -> logout.logoutUrl("/api/auth/logout")
-                                        .addLogoutHandler(logoutHandler)
-                                        .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext()))
-                                .build();
-        }
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+            .csrf(AbstractHttpConfigurer::disable)
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .authorizeHttpRequests(authorize -> 
+                authorize
+                    .requestMatchers(PUBLIC_ENDPOINTS).permitAll()
+                    .anyRequest().authenticated())
+            .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+            .authenticationProvider(authenticationProvider)
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+            .logout(logout -> logout
+                .logoutUrl("/api/auth/logout")
+                .addLogoutHandler(logoutHandler)
+                .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext()))
+            .build();
+    }
 
-        @Bean
-        public CorsConfigurationSource corsConfigurationSource() {
-                CorsConfiguration corsConfiguration = new CorsConfiguration();
-                // Note : Replace with server url/ip in production
-                corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
-                corsConfiguration.setAllowedHeaders(Arrays.asList(AUTHORIZATION, CONTENT_TYPE));
-                corsConfiguration.setAllowedMethods(Arrays.asList(GET.name(), POST.name(), PUT.name(), PATCH.name(), DELETE.name(), HEAD.name(), OPTIONS.name()));
-                corsConfiguration.setAllowCredentials(true);
-                UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-                source.registerCorsConfiguration("/**", corsConfiguration);
-                return source;
-        }
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+        corsConfiguration.setAllowedHeaders(Arrays.asList(AUTHORIZATION, CONTENT_TYPE));
+        corsConfiguration.setAllowedMethods(Arrays.asList(GET.name(), POST.name(), PUT.name(), PATCH.name(), DELETE.name(), HEAD.name(), OPTIONS.name()));
+        corsConfiguration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfiguration);
+        return source;
+    }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Register.css';  // Ensure the correct path to your CSS file
+import './Register.css';  
 import axios from 'axios'; 
 
 const Register = () => {
@@ -9,7 +9,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -39,13 +39,13 @@ const Register = () => {
       );
       console.log(response.data);
       alert("Registration Successful!");
-      navigate('/'); // Navigate to login page after successful registration
+      navigate('/');
     } catch (error) {
       console.error(error);
       alert("Registration Failed!");
     }
 
-    // Handle form submission (e.g., send data to server)
+   
     console.log("Name:", name);
     console.log("Email:", email);
     console.log("Phone:", phone);
@@ -53,14 +53,14 @@ const Register = () => {
   };
 
   const validateEmail = (email) => {
-    // Basic email validation pattern
+   
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   };
 
   return (
     <div className="bg">
-      <div className="container">
+      <div className="containerss">
         <div className="formContainer">
           <h2 className="title">Life Insurance Registration</h2>
           <form onSubmit={handleSubmit}>
